@@ -5,3 +5,4 @@ def freq(q:str):
     return di
 
 #hash map 的实现
+class myHash:
