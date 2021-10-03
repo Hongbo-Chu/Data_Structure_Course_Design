@@ -6,3 +6,4 @@ def freq(q:str):
 
 #hash map 的实现
 class myHash:
+ ###
