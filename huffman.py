@@ -86,9 +86,11 @@ class huffman:
         if (not node):
             return
         elif node.name!='@':
+            x = ''
             print (node.name + '的编码为:')
             for i in range(length):
-                print (self.b[i])
+                x+=str(self.b[i])
+            print (x)
             print( '\n')
             return
         self.b[length]=0
@@ -105,6 +107,6 @@ def aa(nums:list) ->str:
         x = str(nums[i])
         m+=x
     return m
-a = "abcd"
+a = "aaaaaaassdfffcc"
 k = huffman(a)
 k.get_code()
