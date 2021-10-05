@@ -54,15 +54,30 @@ class huffman:
     def get_code(self)-> dict:
         self.encoding(self.Root,0)
         return self.codes
-    def encodingFile(self, path):
+    def encodingFile(self, path) -> str:
         data = self.getFile(path)
         newCoding=''
         for i in range(len(data)):
             newCoding+=self.codes[data[i]]
-        print(newCoding)
+        return newCoding
 
+    def decoding(self, code)-> str:
+        pointer = 0
+        treePointer = self.Root
+        res = ''
+        for i in range(len(code)):
+            if treePointer !='@' and treePointer !=None:
+                res += treePointer.name
+                treePointer = self.Root
+            if code[i] == '1':
+                treePointer = treePointer.right
+            if code[i] == '0':
+                treePointer = treePointer.left
+        return res
 
 path = "D:\\Data_Structure_Course_Design\\cs_data\\2_1.txt"
 a = huffman(path)
 a.get_code()
 a.encodingFile(path)
+k = a.decoding(a.encodingFile(path))
+print(k)
