@@ -2,7 +2,6 @@
 # with open("cs_data/0_3.txt", "r") as f:
 #     data = f.read()
 #     print(data.find(ww))
-
 import os
 ww = input("输入要查找的字符")
 files_path = 'cs_data'

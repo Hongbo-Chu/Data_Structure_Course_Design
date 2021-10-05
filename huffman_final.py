@@ -13,8 +13,9 @@ class node:
         self.right = None
 
 class huffman:
-    def __init__(self, x:str):
-
+    def __init__(self, path:str):
+        with open(path) as f:
+            x = f.read()
         self.Huffbuf =[node(val, key) for key, val in freq(x).items()]#创建Node列表
         self.Huffbuf.sort(key=lambda node: node.value, reverse=True)
         while len(self.Huffbuf)!=1:
@@ -24,34 +25,44 @@ class huffman:
             temp.right = self.Huffbuf.pop(-1)
             self.Huffbuf.append(temp)
         self.Root = self.Huffbuf[0]#用于存放根节点
-        self.codes = []
+        self.codes = {}
         self.b = [0]*10
-    def pre(self,tree,length):
+
+    def getFile(self, path) -> str:
+        with open(path) as f:
+            data = f.read()
+        return data
+    def encoding(self,tree,length):
         node=tree
         if (not node):
             return
         elif node.name!='@':
             x = ''
-            print (node.name + '的编码为:')
+            # print (node.name + ':')
             for i in range(length):
                 x+=str(self.b[i])
-            print (x)
-            print( '\n')
+            temp = {node.name: x}
+            self.codes.update(temp)
+            # print (temp)
+            # print( '\n')
             return
         self.b[length]=0
-        self.pre(node.left,length+1)
+        self.encoding(node.left,length+1)
         self.b[length]=1
-        self.pre(node.right,length+1)
+        self.encoding(node.right,length+1)
      #生成哈夫曼编码
-    def get_code(self):
-        self.pre(self.Root,0)
+    def get_code(self)-> dict:
+        self.encoding(self.Root,0)
+        return self.codes
+    def encodingFile(self, path):
+        data = self.getFile(path)
+        newCoding=''
+        for i in range(len(data)):
+            newCoding+=self.codes[data[i]]
+        print(newCoding)
 
-def aa(nums:list) ->str:
-    m = ''
-    for i in range(len(nums)):
-        x = str(nums[i])
-        m+=x
-    return m
-a = "aaaaaaassdfffcc"
-k = huffman(a)
-k.get_code()
+
+path = "D:\\Data_Structure_Course_Design\\cs_data\\2_1.txt"
+a = huffman(path)
+a.get_code()
+a.encodingFile(path)
