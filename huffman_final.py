@@ -66,7 +66,7 @@ class huffman:
         treePointer = self.Root
         res = ''
         for i in range(len(code)):
-            if treePointer !='@' and treePointer !=None:
+            if treePointer.name !='@' and treePointer !=None:
                 res += treePointer.name
                 treePointer = self.Root
             if code[i] == '1':
