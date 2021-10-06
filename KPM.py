@@ -46,9 +46,9 @@ def search(sstr:str, x:str):#x是子串
             flag = 0
     return res
 
-strr = "piggippppig"
-aa = search(strr, "pig")
-print(aa)
+# strr = "piggippppig"
+# aa = search(strr, "pig")
+# print(aa)
 
 
 
