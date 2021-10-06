@@ -3,6 +3,7 @@
 #     data = f.read()
 #     print(data.find(ww))
 import os
+import KPM
 ww = input("输入要查找的字符")
 files_path = 'cs_data'
 dirs = os.listdir(files_path)
@@ -10,5 +11,6 @@ for file in dirs:
     path = (files_path+'\\'+file)
     with open(path) as f:
         data = f.read()
-        if (-1 != data.find(ww)):
+        if KPM.search(data, ww) == ww:
+        #if (-1 != data.find(ww)):
             print("在"+file+"中发现"+ww)
