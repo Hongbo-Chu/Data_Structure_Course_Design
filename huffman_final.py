@@ -18,7 +18,7 @@ class huffman:
             x = f.read()
         self.Huffbuf =[node(val, key) for key, val in freq(x).items()]#创建Node列表
         self.Huffbuf.sort(key=lambda node: node.value, reverse=True)
-        while len(self.Huffbuf)!=1:
+        while len(self.Huffbuf) != 1:
             self.Huffbuf.sort(key= lambda node :node.value,reverse=True)
             temp = node(self.Huffbuf[-1].value+self.Huffbuf[-2].value, "@")
             temp.left = self.Huffbuf.pop(-1)
