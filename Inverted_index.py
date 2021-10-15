@@ -1,5 +1,6 @@
 from collections import defaultdict
 import os
+
 class daopai:
     def __init__(self):
         self.indexx ={}
@@ -10,11 +11,15 @@ class daopai:
         dirs = os.listdir(files_path)
         for file in dirs:
             path = (files_path + '\\' + file)
-            with open(path) as f:
+
+            with open(path) as f:#去除标点
                 data = f.read()
+                for i in ',.:?><"!\/':
+                    data = data.replace(i, "")
+
+
                 buf = ""
                 flag = 0
-
 
                 for i in range(len(data)):
                     if (data[i] != " "):
@@ -44,6 +49,8 @@ class daopai:
             path = ('cs_data' + '\\' + file)
             with open(path) as f:
                 data = f.read()
+                for i in ',.:?><"!\/':
+                    data = data.replace(i, "")
                 buf = ""
                 for i in range(len(data)):
                     if (data[i] != " "):
