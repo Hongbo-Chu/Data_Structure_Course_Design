@@ -65,7 +65,9 @@ class daopai:
 
 
 a = daopai().getInv()
-b = logic_judge_final.logicSearch("story&man",a)
-b.getAns()
-print(b.ansList)
+print(a["man"])
+
+# b = logic_judge_final.logicSearch("models&and",a)
+# print(b.getAns())
+
 
