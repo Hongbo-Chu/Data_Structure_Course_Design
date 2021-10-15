@@ -49,18 +49,17 @@ class logicSearch:
 
     def getAns(self):
         # 第一项跟all&
-        sttr = self.Liss[0]
-        self.ansList = self.Myand(self.invidx[sttr])
+        self.ansList = self.Myand(self.invidx[str(self.Liss[0])])
         self.Liss.pop(0)
         for ite in self.Liss:
             if len(self.Liss)>0:
                 if ite == "&":
                     self.Liss.pop(0)
-                    self.ansList = self.Myand(self.invidx[self.Liss[0]])
+                    self.ansList = self.Myand(self.invidx[str(self.Liss[0])])
                     self.Liss.pop(0)
                 elif ite == "|":
                     self.Liss.pop(0)
-                    self.ansList = self.Myor(self.invidx[self.Liss[0]])
+                    self.ansList = self.Myor(self.invidx[str(self.Liss[0])])
                     self.Liss.pop(0)
         return self.ansList
 

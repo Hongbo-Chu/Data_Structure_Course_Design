@@ -65,9 +65,9 @@ class daopai:
 
 
 a = daopai().getInv()
-print(a["man"])
+# print(a["man"])
 
-# b = logic_judge_final.logicSearch("models&and",a)
-# print(b.getAns())
+b = logic_judge_final.logicSearch("watching&fuck",a)
+print(b.getAns())
 
 
