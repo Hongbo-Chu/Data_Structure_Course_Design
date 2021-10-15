@@ -4,7 +4,7 @@
 #     print(data.find(ww))
 import os
 import KPM
-ww = input("输入要查找的字符")
+ww = input("输入要查找的内容")
 files_path = 'cs_data'
 dirs = os.listdir(files_path)
 for file in dirs:
