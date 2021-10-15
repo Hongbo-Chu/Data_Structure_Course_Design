@@ -11,6 +11,7 @@ for file in dirs:
     path = (files_path+'\\'+file)
     with open(path) as f:
         data = f.read()
-        #if KPM.search(data, ww) == ww:
-        if (-1 != data.find(ww)):
-            print("在"+file+"中发现"+ww)
+        temp = KPM.search(data, ww)
+        if temp != []:
+            print("在"+file+"中发现" + ww+" 出现在这些位置:")
+            print(temp)

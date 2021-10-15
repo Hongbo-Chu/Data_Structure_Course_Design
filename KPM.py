@@ -45,10 +45,3 @@ def search(sstr:str, x:str):#x是子串
             i+=1
             flag = 0
     return res
-
-# strr = "piggippppig"
-# aa = search(strr, "pig")
-# print(aa)
-
-
-

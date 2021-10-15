@@ -1,6 +1,8 @@
 from collections import defaultdict
 import os
-
+"""
+在原有的倒排索引的基础上添加了“TOP结果搜索”即：对于要搜索的单词进行在文章中出现的次数进行排序和统计
+"""
 class daopai:
     def __init__(self):
         self.indexx ={}
@@ -43,7 +45,6 @@ class daopai:
     def search(self, input:str):
         #此时已经有了倒排索引
         wordLis = defaultdict(int)  # 在每一篇文章中建立关键词字典来记录出现了多少次
-        i = self.liss[input][2]
         self.topNum = {}
         for file in self.liss[input]:
             path = ('cs_data' + '\\' + file)
@@ -65,5 +66,5 @@ class daopai:
 
 
 a = daopai()
-a.search("story")
+a.search("of")
 
