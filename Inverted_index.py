@@ -1,5 +1,6 @@
 from collections import defaultdict
 import os
+import logic_judge_final
 """
 在原有的倒排索引的基础上添加了“TOP结果搜索”即：对于要搜索的单词进行在文章中出现的次数进行排序和统计
 """
@@ -37,11 +38,9 @@ class daopai:
                             self.liss[buf].append(file)
                         flag = 0
                         buf = ""
-
-
         self.indexx = dict(self.liss)
-
-
+    def getInv(self):
+        return self.indexx
     def search(self, input:str):
         #此时已经有了倒排索引
         wordLis = defaultdict(int)  # 在每一篇文章中建立关键词字典来记录出现了多少次
@@ -65,6 +64,8 @@ class daopai:
         print(self.topNum)
 
 
-a = daopai()
-a.search("of")
+a = daopai().getInv()
+b = logic_judge_final.logicSearch("story&man",a)
+b.getAns()
+print(b.ansList)
 

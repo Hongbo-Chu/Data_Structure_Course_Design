@@ -61,7 +61,7 @@ class huffman:
             newCoding+=self.codes[data[i]]
         return newCoding
 
-    def decoding(self, code)-> str:
+    def  decoding(self, code)-> str:
         pointer = 0
         treePointer = self.Root
         res = ''
