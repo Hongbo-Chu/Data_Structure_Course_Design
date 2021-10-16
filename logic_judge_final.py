@@ -63,4 +63,3 @@ class logicSearch:
                     self.Liss.pop(0)
         return self.ansList
 
-#['104_3.txt', '113_4.txt', '130_1.txt', '153_1.txt', '16_3.txt', '186_1.txt', '191_3.txt', '47_2.txt', '50_4.txt', '64_1.txt', '83_3.txt', '97_1.txt']

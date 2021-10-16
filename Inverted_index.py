@@ -61,13 +61,17 @@ class daopai:
                 self.topNum[file] = wordLis[input]
                 wordLis = defaultdict(int)
         self.topNum = sorted(self.topNum.items(), key=lambda item:item[1],reverse=True)
-        print(self.topNum)
+        # print(self.topNum)
+        return self.topNum
 
 
 a = daopai().getInv()
 # print(a["man"])
 
-b = logic_judge_final.logicSearch("watching&fuck",a)
+b = logic_judge_final.logicSearch("and&of&story",a)
 print(b.getAns())
 
 
+
+# a = daopai().search("and")
+# print(len(a))
