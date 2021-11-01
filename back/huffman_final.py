@@ -26,7 +26,7 @@ class huffman:
             self.Huffbuf.append(temp)
         self.Root = self.Huffbuf[0]#用于存放根节点
         self.codes = {}
-        self.b = [0]*10
+        self.b = [0]*10#用于存放编码
 
     def getFile(self, path) -> str:
         with open(path) as f:
@@ -75,9 +75,10 @@ class huffman:
                 treePointer = treePointer.left
         return res
 
-path = "D:\\Data_Structure_Course_Design\\cs_data\\2_1.txt"
+path = "D:\\Data_Structure_Course_Design\\cs_data\\101_1-.txt"
 a = huffman(path)
 a.get_code()
 a.encodingFile(path)
-k = a.decoding(a.encodingFile(path))
+print(a.get_code())
 print(a.encodingFile(path))
+print(a.decoding(a.encodingFile(path)))

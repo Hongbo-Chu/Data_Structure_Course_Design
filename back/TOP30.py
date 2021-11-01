@@ -31,13 +31,8 @@ class daopai:
 
         self.indexx = dict(self.liss)
         self.indexx = sorted(self.indexx.items(), key=lambda item: item[1],reverse=True)
-        i =1
-        for key in self.liss:
-            print("第%d多:"%i)
-            i+=1
-            print(key)
-            if i>=30:
-                break
+        print(self.indexx)
+
 
     def getInv(self):
         return self.indexx
