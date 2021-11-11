@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!--<h4>这是一个表单测试</h4>-->
+<!--<form action="/jsondemo" method="post">-->
+<!--请输入：<input type="text" id="demo" name="demo"><br>-->
+<!--    <input type="submit" value="提交" id="btn">-->
+<!--</form>-->
+<h4>ajax测试</h4>
+<input type="text" id="demo" name="demo"><br>
+<button id="btn">提交</button>
+<br>
+TXT: <div id="txt"></div>
+<br>
+encode: <div id="encode"> </div>
+<button id="enbtn">编码</button>
+
+</body>
+<script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+<script>
+// hide()
+// show()
+
+    $("#btn").click(function(){
+        $.ajax({
+            url: '/jsondemo',
+            data: JSON.stringify({
+                'name': $('#demo').val()
+            }),
+            dataType:'text',  // 服务器回传的
+            contentType:'application/json',//传给服务器的
+            method:'POST',
+            success:function(data){
+               // alert(data.name);
+                $('#txt').text(data);
+            },
+            error:function(){
+                alert('error');
+            }
+        });
+    })
+    $("#enbtn").click(function(){
+        $.ajax({
+            url : '/encode',
+            data: JSON.stringify({
+                'name': $('#demo').val()
+            }),
+             dataType:'text',  // 服务器回传的
+            contentType:'application/json',//传给服务器的
+            method:'POST',
+            success:function(data){
+               // alert(data.name);
+                $('#enbtn').text(data);
+            },
+            error:function(){
+                alert('error2');
+            }
+        })
+    })
+</script>
+</html>

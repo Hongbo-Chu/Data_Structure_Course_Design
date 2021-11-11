@@ -75,10 +75,10 @@ class huffman:
                 treePointer = treePointer.left
         return res
 
-path = "D:\\Data_Structure_Course_Design\\cs_data\\101_1-.txt"
-a = huffman(path)
-a.get_code()
-a.encodingFile(path)
-print(a.get_code())
-print(a.encodingFile(path))
-print(a.decoding(a.encodingFile(path)))
+# path = "D:\\Data_Structure_Course_Design\\cs_data\\101_1-.txt"
+# a = huffman(path)
+# a.get_code()
+# a.encodingFile(path)
+# print(a.get_code())
+# print(a.encodingFile(path))
+# print(a.decoding(a.encodingFile(path)))

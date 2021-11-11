@@ -1,0 +1,212 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+   
+}
+:root{
+
+    --blue: #287bff;
+    --white: #fff;
+    --gary: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+body{
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #e0e4eb;
+}
+.container{
+    width: 100px;
+    position: relative;
+}
+.navigation{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--blue);   
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+}
+.navigation ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+}
+.navigation ul li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+
+}
+.navigation.active{
+    width: 75px;
+}
+
+.navigation ul li:hover{
+    background: #e0e4eb;
+}
+.navigation ul li:nth-child(1){
+margin-bottom: 40px;
+/* pointer-events: none; 禁止按钮的点击 */
+pointer-events: none;
+}
+
+.navigation ul li a{
+        position: relative;
+        display: block;
+        width: 100%;
+        display: flex;
+        text-decoration: none;
+        color: var(--white);
+}
+.navigation ul li:hover a{
+    color: var(--blue);
+}
+
+.navigation ul li a .icon{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 70px;
+    text-align: center;
+}
+.navigation ul li a .icon ion-icon{
+    font-size: 1.75em;
+}
+
+.navigation ul li a .title{
+    position: relative;
+    /* 行内元素变为块级元素 */
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+}
+/* 
+右端圆角 */
+/*before 用于在某个元素之前插入*/
+.navigation ul li:hover a::before
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background:transparent;
+     top: -50px;
+    /*画个球来只做效果 */
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px #e0e4eb;
+}
+
+.navigation ul li:hover a::after
+{
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background:transparent;
+    bottom: -50px;
+    /*画个球来只做效果 */
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px #e0e4eb;
+}
+
+.main{
+    position:absolute;
+    width: calc(100% - 300px);
+    left:300px;
+    min-height: 100vh;
+    background: #e0e4eb;
+    transition: 0.5s;
+}  
+
+.main.active{
+    width: calc(100% - 75px);
+    
+}
+
+.tttt{
+    width: 1100px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.toggle{
+    position: relative;
+    top:0;
+    width: 60px;
+    height: 60px;
+    /* background:#ccc; */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.search{
+    width: 400px;
+    position: relative;
+    margin: 0 10px;
+    left: -100px;
+}
+.search label{
+    width: 100%;
+    position: relative;
+}
+
+.search input{
+    position: relative;
+    top: 300px;
+    align-items: center;
+    width: 120%;
+    height: 50px;
+    border-radius: 40px;
+    pading: 5px 20px;
+    padding-left: 35px;
+    outline: none;
+    border:1px solid var(--black2); 
+    color: gray;
+    background-color: transparent;
+    box-shadow: -10px -10px 15px#edeff1,
+    10px 10px 15px #cacfd8;
+    
+}
+.search label ion-icon{
+    position: absolute;
+    top: 1000;
+    width: 890px;
+    height: 30px;  
+    top: 295px;
+    font-size: 1.2em;
+}
+
+.user{
+    position: relative;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor:pointer;
+    left: 110px;
+    top: 10px;
+    
+}
+
+.user img{
+    width: 40px;
+    height: 40px;
+}
