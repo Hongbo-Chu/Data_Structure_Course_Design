@@ -162,6 +162,7 @@ pointer-events: none;
     position: relative;
     margin: 0 10px;
     left: -100px;
+    /* top: 100px; */
 }
 .search label{
     width: 100%;
@@ -170,7 +171,7 @@ pointer-events: none;
 
 .search input{
     position: relative;
-    top: 300px;
+    top: 30px;
     align-items: center;
     width: 120%;
     height: 50px;
@@ -209,4 +210,34 @@ pointer-events: none;
 .user img{
     width: 40px;
     height: 40px;
+}
+
+.searchenter{
+    position: absolute;
+    width: 89px;
+    height: 50px;  
+    top: 15px;
+    left: 390px;
+    font-size: 1.2em;
+    border-radius: 30px;
+    background: #e1e1ee
+}
+
+#btn_doc{
+	background:transparent;	/*按钮背景透明*/
+	border-width:0px;	/*边框透明*/
+	outline:none;	/*点击后没边框*/  
+  width: 280px;
+  height: 48px;
+  position: relative;
+  top: -50px;
+}
+#btn_enc{
+  background:transparent;	/*按钮背景透明*/
+	border-width:0px;	/*边框透明*/
+	outline:none;	/*点击后没边框*/  
+  width: 280px;
+  height: 48px;
+  position: relative;
+  top: -50px;
 }

@@ -4,10 +4,10 @@ sys.path.append('../back/')
 from huffman_final import huffman
 app = Flask(__name__)
 
-@app.route('/about')
+@app.route('/homepage')
 def hello():
     # return "212"
-    return render_template('about.html')
+    return render_template('homepage.html')
 
 @app.route('/jsondemo', methods = ['post'])
 def jsondemo():
@@ -15,7 +15,7 @@ def jsondemo():
     info = request.json.get('name')
     print(info)
 
-    path = "D:\vscodePythonSpace\Data_Structure_Course_Design\cs_dataData_Structure_Course_Design\cs_data\\"
+    path = "D:/vscodePythonSpace/Data_Structure_Course_Design/cs_data/"
     path += str(info)
     with open(path, "r") as f:
         data = f.read()
@@ -32,6 +32,14 @@ def encode():
     a.get_code()
     return a.encodingFile(path1)
 
+
+
+@app.route('/doc')
+def doc():
+    return render_template('doc.html')
+
 if __name__ == '__main__':
     app.run(port=8080, debug=True)
+    
+    
 

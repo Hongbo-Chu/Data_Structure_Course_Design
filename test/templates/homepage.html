@@ -5,9 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="test.css" />
+  <link rel="stylesheet" type="text/css" href="../static/homepage.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="homepage.css" th:href="@{homepage.css}" /> -->
+  <!-- <link href="{{ url_for('static', filename = 'homepage.css') }}" rel="stylesheet" />； -->
   <title>Document</title>
+
+
 </head>
+
 
 <body>
   <div class="container">
@@ -36,15 +41,21 @@
             <span class="icon">
               <ion-icon name="clipboard-outline"></ion-icon>
             </span>
-            <span class="title"><b>newdoc</b></span>
+            <span class="title"><b>newdoc1
+              <button id="btn_doc"></button>
+            </b></span>
+            
           </a>
         </li>
         <li>
           <a href="#">
             <span class="icon">
-             <ion-icon name="code-slash-outline"></ion-icon>   
+              <ion-icon name="code-slash-outline"></ion-icon>   
+              
             </span>
-            <span class="title"><b>encode/decode</b></span>
+            <span class="title"><b>encode/decode
+              <button id="btn_enc"></button>
+            </b></span>
           </a>
         </li>
         <li>
@@ -66,8 +77,10 @@
         <!-- search -->
         <div class="search">
           <label>
-            <input type="text" placeholder="hhhhh">
-            <ion-icon name="search-outline"></ion-icon>
+            <input id="ss" name="ss" type="text" placeholder="search here~">
+            <!-- <ion-icon name="search-outline"></ion-icon> -->
+              <button id="btn" class="searchenter">search</button>
+              <br>txt:<div id="txt"></div>
           </label>
         </div>
 
@@ -82,6 +95,7 @@
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
   <script>
     //menutoggle
     let toggle = document.querySelector('.toggle');
@@ -103,6 +117,59 @@
     item.addEventListener('mouseover', activeLink));
   </script>
 
+  <script>
+// hide()
+// show()
+
+    $("#btn").click(function(){
+        $.ajax({
+            url: '/jsondemo',
+            data: JSON.stringify({
+                'name': $('#ss').val()
+            }),
+            dataType:'text',  // 服务器回传的
+            contentType:'application/json',//传给服务器的
+            method:'POST',
+            success:function(data){
+               // alert(data.name);
+                $('#txt').text(data);
+            },
+            error:function(){
+                alert('error');
+            }
+        });
+    })
+    $("#enbtn").click(function(){
+        $.ajax({
+            url : '/encode',
+            data: JSON.stringify({
+                'name': $('#demo').val()
+            }),
+             dataType:'text',  // 服务器回传的
+            contentType:'application/json',//传给服务器的
+            method:'POST',
+            success:function(data){
+               // alert(data.name);
+                $('#enbtn').text(data);
+            },
+            error:function(){
+                alert('error2');
+            }
+        })
+    });
+
+    $("#btn_doc").click(function(){
+      window.location.href = "doc";
+      window.open("doc.html");
+     
+    });
+      $("#btn_enc").click(function(){
+      //window.location.href = "doc";
+      //window".open("doc.html");
+        alert("hello");
+    });
+</script>
+    
 </body>
 
 </html>
