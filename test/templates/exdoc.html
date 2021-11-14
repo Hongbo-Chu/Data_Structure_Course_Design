@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="../static/doc.css" />
+  <link rel="stylesheet" type="text/css" href="../static/exdoc.css" />
   <link rel="stylesheet" type="text/css" href="../static/style.css"href="{{url_for('static',filename='style.css')}}" />
   <title>Document</title>
 
@@ -26,10 +26,13 @@
                 <button name="btn1" class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
                   clearAll
                 </button>
+                <button id="choose" class= "btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
+                  choose
+                </button>
+                <input type="text" id="filename" placeholder="filename">
                 <button id="savee" class= "btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
                   save
                 </button>
-                <input type="text" id="filename" placeholder="filename">
                 <button id="exitt" class= "btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
                   exit
                 </button>
@@ -46,9 +49,32 @@
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
 <script>
-   $("#savee").click(function () {
+   $("#choose").click(function () {
       $.ajax({
-        url: '/newdoc',
+        url: '/exdoc/edit',
+        data: JSON.stringify({
+          'name': $('#filename').val()
+        }),
+        dataType: 'text',  // 服务器回传的
+        contentType: 'application/json',//传给服务器的
+        method: 'POST',
+        success: function (data) {
+            $("#txa").append(data);        
+            alert("now you can edit it");
+        },
+        error: function () {
+          alert('file do not exit');
+        }
+      })
+    });
+    $("#exitt").click(function(){
+      window.location.href = "homepage";
+      window.open("homepage.html");
+    });
+    
+    $("#savee").click(function () {
+      $.ajax({
+        url: '/exdoc/save',
         data: JSON.stringify({
           'name': $('#filename').val(),
           'cont': $('#txa').val()
@@ -56,17 +82,13 @@
         dataType: 'text',  // 服务器回传的
         contentType: 'application/json',//传给服务器的
         method: 'POST',
-        success: function (data) {
-          alert("save success")
+        success: function (data) {     
+            alert("save success");
         },
         error: function () {
-          alert('error2');
+          alert('file do not exit');
         }
       })
-    });
-    $("#exitt").click(function(){
-      window.location.href = "homepage";
-      window.open("homepage.html");
     });
 </script>
 

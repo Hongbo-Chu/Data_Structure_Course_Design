@@ -5,10 +5,21 @@ from huffman_final import huffman
 from search import searcher
 app = Flask(__name__)
 
+
+#渲染页面
 @app.route('/homepage')
 def hello():
     # return "212"
     return render_template('homepage.html')
+
+@app.route('/doc')
+def doc():
+    return render_template('doc.html')
+
+@app.route('/exdoc')
+def exdoc():
+    return render_template('exdoc.html')
+
 # #显示中文文本
 # @app.route('/jsondemo', methods = ['post'])
 # def jsondemo():
@@ -44,11 +55,37 @@ def encode():
     a.get_code()
     return a.encodingFile(path1)
 
+#新建文件
+@app.route('/newdoc', methods = ['post'])
+def newdoc():
+    f = request.json.get('name')
+    cont = request.json.get('cont')
+    f = str(f)
+    cont = str(cont)
+    fname = 'D:\\vscodePythonSpace\Data_Structure_Course_Design\cs_data\\'+f
+    file = open(fname,'w')
+    file.write(cont)
+    return cont
 
+#编辑已有的文件
+@app.route('/exdoc/edit', methods = ['post'])
+def edit_exdoc():
+    f = request.json.get('name')
+    fname = 'D:\\vscodePythonSpace\Data_Structure_Course_Design\cs_data\\'+f
+    with open(fname, "r") as f:
+        data = f.read()
+    return data
 
-@app.route('/doc')
-def doc():
-    return render_template('doc.html')
+@app.route('/exdoc/save', methods = ['post'])
+def edit_exdoc_save():
+    f = request.json.get('name')
+    cont = request.json.get('cont')
+    f = str(f)
+    cont = str(cont)
+    fname = 'D:\\vscodePythonSpace\Data_Structure_Course_Design\cs_data\\'+f
+    file = open(fname,'w')
+    file.write(cont)
+    return cont
 
 if __name__ == '__main__':
     app.run(port=8080, debug=True)

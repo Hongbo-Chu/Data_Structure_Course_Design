@@ -61,7 +61,9 @@
             <span class="icon">
               <ion-icon name="create-outline"></ion-icon>
             </span>
-            <span class="title"><b>edit exist</b></span>
+            <span class="title"><b>edit exist
+              <button id="btn_exitc"></button>
+            </b></span>
           </a>
         </li>
       </ul>
@@ -135,8 +137,13 @@
           // alert(data.name);
           //$('#txt').text(data);
           $("#showw").empty();
+          var cout =0;
           for(var i in data){
             $("#showw").append("<li style = 'width:300px'>"+i+":第"+data[i]+"个字母"+"</li>");
+            cout=1;
+          }
+          if(cout==0){
+            $("#showw").append("<li>"+"文件中不存在该词"+"</li>");
           }
           console.log(data);
 
@@ -144,8 +151,8 @@
         error: function () {
           alert('error');
         }
-      });
-    })
+      })
+    });
     $("#enbtn").click(function () {
       $.ajax({
         url: '/encode',
@@ -174,6 +181,11 @@
       //window.location.href = "doc";
       //window".open("doc.html");
       alert("hello");
+    });
+    $("#btn_exitc").click(function () {
+      window.location.href = "exdoc";
+      window.open("exdoc.html");
+
     });
   </script>
 

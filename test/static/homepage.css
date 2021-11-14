@@ -248,3 +248,12 @@ pointer-events: none;
     margin: 10px;
     width: 100px;
 }
+#btn_exitc{
+    background:transparent;	/*按钮背景透明*/
+	border-width:0px;	/*边框透明*/
+    outline:none;	/*点击后没边框*/  
+    width: 280px;
+    height: 48px;
+    position: relative;
+    top: -50px;
+}
