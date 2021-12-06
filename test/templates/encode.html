@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/encode.css" />
+    <link rel="stylesheet" type="text/css" href="../static/style.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="homepage.css" th:href="@{homepage.css}" /> -->
+    <!-- <link href="{{ url_for('static', filename = 'homepage.css') }}" rel="stylesheet" />； -->
+    <title>Document</title>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="document-attach-outline"></ion-icon>
+                        </span>
+                        <span class="title">
+                            <h1>Onlinedoc</h1>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="search-circle-outline"></ion-icon>
+                        </span>
+                        <span class="title"><b>search
+                                <button id="btn_search"></button>
+                            </b></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="clipboard-outline"></ion-icon>
+                        </span>
+                        <span class="title"><b>newdoc1
+                                <button id="btn_doc"></button>
+                            </b></span>
+
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="code-slash-outline"></ion-icon>
+
+                        </span>
+                        <span class="title"><b>encode/decode
+                                <button id="btn_enc"></button>
+                            </b></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </span>
+                        <span class="title"><b>edit exist
+                                <button id="btn_exitc"></button>
+                            </b></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main">
+            <div class="tttt">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+                <!-- encode -->
+                <div class="encode_name">
+                    encodefile~
+                    <input class="encode_input" type="text" id="encode_input">
+                    <button class="encode_btn" id="encode_btn">search</button>
+                    <button class="encode_encode" id="encode_encode">encode</button>
+                    <div class="encodearea" id="encodearea">
+                    </div>
+                </div>
+
+                <div class="process" id="process" class="bg-rose-600 ...">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px"
+                        height="30px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+                        <path opacity="0.2" fill="#FF6700"
+                            d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+      s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+      c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
+                        <path fill="#FF6700" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+      C22.32,8.481,24.301,9.057,26.013,10.047z" transform="rotate(42.1171 20 20)">
+                            <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20"
+                                to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
+                        </path>
+                    </svg>
+
+                    process
+                </div>
+
+                <div class="decode_name">
+                    decodefile~
+                    <input class="decode_input" type="text" placeholder="save as~">
+                    <button class="decode_save">save</button>
+                    <button class="decode_decode" id="decode_decode">decode</button>
+                    <!-- <textarea name="decodearea" id="decodearea" cols="50" rows="50"></textarea> -->
+                    <!-- <div class="decodearea" id="decodearea"> -->
+                    <div class="list scroll decodearea">
+                        <div class="list-item" id="list-item"></div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="user">
+                <img src="../static/image1.jpg">
+            </div>
+        </div>
+
+        <ul id="showw" style="width: 600px;">
+
+        </ul>
+        <footer class="footer">
+
+            <svg width="70" height="60" viewBox="0 0 70 60" class="heart animate-bounce w-6 h-6 ...">
+                <path
+                    d="M0 10 L10 10 L10 0 L30 0 L30 10 L40 10 L40 0 L60 0 L60 10 L70 10 L70 30 L60 30 L60 40 L50 40 L50 50 L40 50 L40 60 L30 60 L30 50 L20 50 L20 40 L10 40 L10 30 L0 30 Z"
+                    fill="red" fill-rule="evenodd" />
+            </svg>
+            <p class="text-blue-600 text-opacity-25..." style="width:1000px;">
+                web made by chb 19026110
+            </p>
+        </footer>
+    </div>
+
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+    <script>
+        //menutoggle
+        let toggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.navigation');
+        let main = document.querySelector('.main');
+
+        toggle.onclick = function () {
+            navigation.classList.toggle('active');//这里的toggle是函数 不是上面的toggle如果classList中存在给定的值，删除它，否则，添加它；
+            main.classList.toggle('active');
+        }
+        //添加hover class在选定的item上
+        let list = document.querySelectorAll('.navigation li');
+        function activeLink() {
+            list.forEach((item) =>
+                item.classList.remove('hovered'));//移除或添加类
+            this.classList.add('hovered');
+        }
+        list.forEach((item) =>
+            item.addEventListener('mouseover', activeLink));
+    </script>
+
+    <script>
+        // hide()
+        // show()
+        $("#process").hide()
+        $("#encode_btn").click(function () {
+            $.ajax({
+                url: '/encode/search',
+                data: JSON.stringify({
+                    'name': $('#encode_input').val()
+                }),
+                dataType: 'text',  // 服务器回传的
+                contentType: 'application/json',//传给服务器的
+                method: 'POST',
+                success: function (data) {
+                    $("#encodearea").html("")
+                    $("#encodearea").append(data);
+                    //alert("now you can edit it");
+                },
+                error: function () {
+                    alert('file do not exit');
+                }
+            })
+        });
+
+        $("#decode_decode").click(function () {
+            $.ajax({
+                url: '/encode/encoding',
+                data: JSON.stringify({
+                    'name': $('#encode_input').val()
+                }),
+                dataType: 'text',  // 服务器回传的
+                contentType: 'application/json',//传给服务器的
+                method: 'POST',
+                success: function (data) {
+                    $("#process").show()
+                    setTimeout(function(){$("#process").hide();},2000);
+                    setTimeout(function(){
+                        $("#list-item").html("")
+                        $("#list-item").append(data);
+
+                    },1000);
+
+                },
+                error: function () {
+                    alert('file do not exit');
+                }
+            })
+        });
+
+        $("#btn_doc").click(function () {
+            window.location.href = "doc";
+            window.open("doc.html");
+
+        });
+        $("#btn_search").click(function () {
+            alert("hello");
+            window.location.href = "doc";
+            window.open("doc.html");
+        });
+        $("#btn_exitc").click(function () {
+            window.location.href = "exdoc";
+            window.open("exdoc.html");
+
+        });
+        
+    </script>
+
+</body>
+
+</html>

@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="../static/homepage.css" />
+  <link rel="stylesheet" type="text/css" href="../static/style.css" />
   <!-- <link rel="stylesheet" type="text/css" href="homepage.css" th:href="@{homepage.css}" /> -->
   <!-- <link href="{{ url_for('static', filename = 'homepage.css') }}" rel="stylesheet" />； -->
   <title>Document</title>
@@ -22,7 +23,7 @@
               <ion-icon name="document-attach-outline"></ion-icon>
             </span>
             <span class="title">
-              <h2>Onlinedoc</h2>
+              <h1>Onlinedoc</h1>
             </span>
           </a>
         </li>
@@ -77,7 +78,7 @@
         <!-- search -->
         <div class="search">
           <label>
-            <input id="ss" name="ss" type="text" placeholder="search here~">
+            <input id="ss" name="ss" type="text" placeholder="search here~"  class="placeholder-gray-400 ...">
             <!-- <ion-icon name="search-outline"></ion-icon> -->
             <button id="btn" class="searchenter">search</button>
           </label>
@@ -89,9 +90,18 @@
         </div>
       </div>
 
-      <ul id="showw">
+      <ul id="showw" style="width: 600px;">
         
       </ul>
+     <footer class="footer">
+       
+      <svg width="70" height="60" viewBox="0 0 70 60" class="heart animate-bounce w-6 h-6 ...">
+      <path d="M0 10 L10 10 L10 0 L30 0 L30 10 L40 10 L40 0 L60 0 L60 10 L70 10 L70 30 L60 30 L60 40 L50 40 L50 50 L40 50 L40 60 L30 60 L30 50 L20 50 L20 40 L10 40 L10 30 L0 30 Z" fill="red" fill-rule="evenodd" />
+      </svg>
+      <p class="text-blue-600 text-opacity-25..." style="width:1000px;">
+        web made by chb 19026110
+       </p> 
+     </footer> 
     </div>
 
   </div>
@@ -139,8 +149,9 @@
           $("#showw").empty();
           var cout =0;
           for(var i in data){
-            $("#showw").append("<li style = 'width:300px'>"+i+":第"+data[i]+"个字母"+"</li>");
+            $("#showw").append("<li style = 'width:150%'>"+"<p style='font-size:16px;color:red'>"+i+": "+"</p>"+data[i]+"</li>");
             cout=1;
+            
           }
           if(cout==0){
             $("#showw").append("<li>"+"文件中不存在该词"+"</li>");
@@ -178,9 +189,9 @@
 
     });
     $("#btn_enc").click(function () {
-      //window.location.href = "doc";
-      //window".open("doc.html");
-      alert("hello");
+      window.location.href = "encode";
+      window.open("encode.html");
+
     });
     $("#btn_exitc").click(function () {
       window.location.href = "exdoc";

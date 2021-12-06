@@ -21,6 +21,35 @@ def buildNext(x:str):
         i+=1
     return next
 
+# def search(sstr:str, x:str):#x是子串
+#     res=[]#用于存放答案
+#     i=0#原串指针
+#     j=0#子串指针
+#     next_str = buildNext(x)
+#     flag = 0
+#     while(i<len(sstr)):
+#         while(j<len(x)):
+#             if j<len(x) and i+j<len(sstr) and sstr[int(i+j)] == x[int(j)] :
+#                 j+=1
+#             else:
+#                 #不等的话就跳转
+#                 i = i+(j-1)-(next_str[j]-1)
+#                 flag = (j-1)-(next_str[j]-1)
+#                 j=0
+#                 break
+            
+        
+#         if(j==len(x)):
+#             res.append(i)
+#             j=0
+#             flag=0
+#         if flag == 0:
+#             i+=1
+#             flag = 0
+#     return res
+
+# 上面被注释掉的是正常的搜索 返回值是出现的位置list
+#新版search的返回值是片段子串
 def search(sstr:str, x:str):#x是子串
     res=[]#用于存放答案
     i=0#原串指针
@@ -37,11 +66,29 @@ def search(sstr:str, x:str):#x是子串
                 flag = (j-1)-(next_str[j]-1)
                 j=0
                 break
-        if(j==len(x)):
-            res.append(i)
+        
+        
+        if(j==len(x)):    
+            # 截取片段
+            coutt = 0#记录空格数量
+            seg = ""
+            nn = int(i)
+            while coutt < 6:
+                if  nn==len(sstr)-1:
+                    break
+                if sstr[nn] == " ":
+                    coutt+=1
+                seg+=sstr[nn]
+                nn += 1
+            res.append(seg)
             j=0
             flag=0
         if flag == 0:
             i+=1
             flag = 0
     return res
+
+
+
+  #截取片段
+                

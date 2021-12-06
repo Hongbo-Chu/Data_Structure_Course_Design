@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 #渲染页面
 @app.route('/homepage')
-def hello():
+def homepage():
     # return "212"
     return render_template('homepage.html')
 
@@ -20,6 +20,9 @@ def doc():
 def exdoc():
     return render_template('exdoc.html')
 
+@app.route('/encode')
+def encode():
+    return render_template('encode.html')
 # #显示中文文本
 # @app.route('/jsondemo', methods = ['post'])
 # def jsondemo():
@@ -44,16 +47,17 @@ def jsondemo():
 
 
 
-@app.route('/encode', methods = ['post'])
-def encode():
-    print('encode')
-    ii = request.json.get('name')
-    path1 = "cs_data/"
-    print(path1)
-    path1 += str(ii)
-    a = huffman(path1)
-    a.get_code()
-    return a.encodingFile(path1)
+
+# @app.route('/encode', methods = ['post'])
+# def encode():
+#     print('encode')
+#     ii = request.json.get('name')
+#     path1 = "cs_data/"
+#     print(path1)
+#     path1 += str(ii)
+#     a = huffman(path1)
+#     a.get_code()
+#     return a.encodingFile(path1)
 
 #新建文件
 @app.route('/newdoc', methods = ['post'])
@@ -86,6 +90,26 @@ def edit_exdoc_save():
     file = open(fname,'w')
     file.write(cont)
     return cont
+
+@app.route('/encode/search', methods = ['post'])
+def encode_search():
+    f = request.json.get('name')
+    f = str(f)
+    fname = 'D:\\vscodePythonSpace\Data_Structure_Course_Design\cs_data\\'+f
+    with open(fname, "r") as f:
+        data = f.read()
+    return data
+
+@app.route('/encode/encoding', methods = ['post'])
+def encode_encoding():
+    ii = request.json.get('name')
+    path1 = "D:\\vscodePythonSpace\Data_Structure_Course_Design\cs_data\\"
+    print(path1)
+    path1 += str(ii)
+    a = huffman(path1)
+    a.get_code()
+    print(a.encodingFile(path1))
+    return a.encodingFile(path1)
 
 if __name__ == '__main__':
     app.run(port=8080, debug=True)

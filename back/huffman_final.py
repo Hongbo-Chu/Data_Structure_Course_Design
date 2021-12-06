@@ -1,5 +1,6 @@
 #先统计词频用hashmap
 import collections as cl
+from typing import overload
 
 def freq(q:str) ->dict:
     di = cl.Counter(q)
@@ -74,6 +75,7 @@ class huffman:
             if code[i] == '0':
                 treePointer = treePointer.left
         return res
+    
 
 # path = "D:\\Data_Structure_Course_Design\\cs_data\\101_1-.txt"
 # a = huffman(path)
