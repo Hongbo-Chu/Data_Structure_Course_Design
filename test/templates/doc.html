@@ -6,47 +6,66 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="../static/doc.css" />
-  <link rel="stylesheet" type="text/css" href="../static/style.css"href="{{url_for('static',filename='style.css')}}" />
+  <link rel="stylesheet" type="text/css" href="../static/style.css" href="{{url_for('static',filename='style.css')}}" />
   <title>Document</title>
 
 
 </head>
 
 <body>
-    <div class="container">
-        <div class="body">
-            <div class="tmenu">
-              <div class="butts">
-                <button name="btn1" class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
-                  HightLight
-                </button>
-                <button name="btn1" class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
-                  Bold
-                </button>
-                <button name="btn1" class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
-                  clearAll
-                </button>
-                <button id="savee" class= "btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
-                  save
-                </button>
-                <input type="text" id="filename" placeholder="filename">
-                <button id="exitt" class= "btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
-                  exit
-                </button>
-              </div>
-            </div>
-            <div class="textarea">
-        <textarea name="txa" id="txa" cols="130" rows="100" class="border-4 border-indigo-600 ..."></textarea>
-            </div>
+  <div class="container">
+    <div class="body">
+      <div class="tmenu">
+        <div class="butts">
+          <button name="btn1"
+            class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
+            HightLight
+          </button>
+          <button name="btn1"
+            class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
+            Bold
+          </button>
+          <button name="btn1"
+            class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
+            clearAll
+          </button>
+          <button id="savee"
+            class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
+            save
+          </button>
+          <input type="text" id="filename" placeholder="filename">
+          <button id="exitt"
+            class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
+            exit
+          </button>
+          <input type="text" id="searchTEXT" placeholder="search something">
+          <button id="search"
+            class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
+            search
+          </button>
+          <button id="switch"
+            class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
+            switchmode
+          </button>
         </div>
-        <div class="footer"></div>
+      </div>
+      <div class="textarea">
+        <textarea name="txa" id="txa" cols="130" rows="100" class="border-4 border-indigo-600 ..."></textarea>
+        <div class="sear" id="sear"></div>
+      </div>
     </div>
+    <div class="footer"></div>
+  </div>
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
-<script>
-   $("#savee").click(function () {
+  <script>
+    var mode_flag = 1;
+    
+    
+
+    $("#savee").click(function () {
       $.ajax({
         url: '/newdoc',
         data: JSON.stringify({
@@ -64,11 +83,54 @@
         }
       })
     });
-    $("#exitt").click(function(){
+    $("#exitt").click(function () {
       window.location.href = "homepage";
       window.open("homepage.html");
     });
-</script>
+
+    $("#search").click(function () {
+      var positions = new Array();
+      function searchSubStr(str, subStr) {
+      var pos = str.indexOf(subStr);
+      while (pos > -1) {
+        positions.push(pos);
+        pos = str.indexOf(subStr, pos + 1);
+      }
+    }
+      var a = $("#txa").val();
+      var con = $("#searchTEXT").val();
+      var len_ = con.length;
+      searchSubStr(a,con);
+      let arr = a.split('');
+      for(var i=positions.length;i>0;i--){  
+          arr.splice(positions[i-1]+len_,0,"</mark>");
+          arr.splice(positions[i-1],0,'<mark>');
+      }
+      a = arr.join('');
+      $("#sear").html("");
+      $("#sear").append(a);
+      console.log(positions);
+      console.log(a);
+      positions = new Array();
+      
+      console.log(con);
+    });
+
+    $("#switch").click(function () {
+      if (mode_flag == 1) {
+        $("#txa").hide();
+        mode_flag = 0;
+        var a = $("#txa").val();
+        $("#sear").html("");
+        $("#sear").append(a);
+      }
+      else {
+        $("#txa").show();
+        mode_flag = 1;
+      }
+    });
+
+  </script>
 
 
 </body>
