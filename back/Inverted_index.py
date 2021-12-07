@@ -68,9 +68,11 @@ class daopai:
 a = daopai().getInv()
 # print(a["man"])
 
-b = logic_judge_final.logicSearch("chb&shit|hhd|good",a)
-print(b.getAns())
-
+try:
+    b = logic_judge_final.logicSearch("man&who",a)
+    print(b.getAns())
+except KeyError:
+    print("当前条件下找不到匹配文件！")
 
 
 # a = daopai().search("and")
