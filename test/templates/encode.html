@@ -106,8 +106,8 @@
 
                 <div class="decode_name">
                     decodefile~
-                    <input class="decode_input" type="text" placeholder="save as~">
-                    <button class="decode_save">save</button>
+                    <input class="decode_input" id="decode_input" type="text" placeholder="save as~">
+                    <button class="decode_save" id="decode_save">save</button>
                     <button class="decode_decode" id="decode_decode">decode</button>
                     <!-- <textarea name="decodearea" id="decodearea" cols="50" rows="50"></textarea> -->
                     <!-- <div class="decodearea" id="decodearea"> -->
@@ -190,7 +190,7 @@
             })
         });
 
-        $("#decode_decode").click(function () {
+        $("#encode_encode").click(function () {
             $.ajax({
                 url: '/encode/encoding',
                 data: JSON.stringify({
@@ -215,15 +215,35 @@
             })
         });
 
+
+        $("#decode_save").click(function () {
+            $.ajax({
+                url: '/encode/save',
+                data: JSON.stringify({
+                'name': $('#decode_input').val(),
+                'cont': $('#list-item').text()
+                }),
+                dataType: 'text',  // 服务器回传的
+                contentType: 'application/json',//传给服务器的
+                method: 'POST',
+                success: function (data) {
+                alert("save success")
+                },
+                error: function () {
+                alert('error2');
+                }
+            })
+        });
+
         $("#btn_doc").click(function () {
             window.location.href = "doc";
             window.open("doc.html");
 
         });
         $("#btn_search").click(function () {
-            alert("hello");
-            window.location.href = "doc";
-            window.open("doc.html");
+            //alert("hello");
+            window.location.href = "homepage";
+            window.open("homepage.html");
         });
         $("#btn_exitc").click(function () {
             window.location.href = "exdoc";

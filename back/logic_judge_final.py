@@ -16,7 +16,7 @@ class logicSearch:
                 buf +=i
         self.Liss.append(buf)
         # 获得文件名列表
-        files_path = 'cs_data'
+        files_path = 'D:\\vscodePythonSpace\Data_Structure_Course_Design\cs_data\\'
         dirs = os.listdir(files_path)
 
         for file in dirs:
@@ -62,4 +62,5 @@ class logicSearch:
                     self.ansList = self.Myor(self.invidx[str(self.Liss[0])])
                     self.Liss.pop(0)
         return self.ansList
+
 

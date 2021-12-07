@@ -10,7 +10,7 @@ class daopai:
         self.liss = defaultdict(list)#用于存放倒排索引
         # self.wordLis = defaultdict(int)#在每一篇文章中建立关键词字典来记录出现了多少次# #会不停的变化
 
-        files_path = 'cs_data'
+        files_path =  'D:\\vscodePythonSpace\Data_Structure_Course_Design\cs_data\\'
         dirs = os.listdir(files_path)
         for file in dirs:
             path = (files_path + '\\' + file)
@@ -66,13 +66,16 @@ class daopai:
 
 
 a = daopai().getInv()
-print(a["man"])
+# print(a["man"])
 
-# b = logic_judge_final.logicSearch("who&man",a)
-# print(b.getAns())
+b = logic_judge_final.logicSearch("chb&shit|hhd|good",a)
+print(b.getAns())
 
 
 
 # a = daopai().search("and")
 # print(len(a))
+
+
+
 

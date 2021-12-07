@@ -108,8 +108,20 @@ def encode_encoding():
     path1 += str(ii)
     a = huffman(path1)
     a.get_code()
-    print(a.encodingFile(path1))
+    # print(a.encodingFile(path1))
     return a.encodingFile(path1)
+
+
+@app.route('/encode/save', methods = ['post'])
+def encode_save():
+    f = request.json.get('name')
+    cont = request.json.get('cont')
+    f = str(f)
+    cont = str(cont)
+    fname = 'D:\\vscodePythonSpace\Data_Structure_Course_Design\huffman_code\\'+f
+    file = open(fname,'w')
+    file.write(cont)
+    return cont
 
 if __name__ == '__main__':
     app.run(port=8080, debug=True)
