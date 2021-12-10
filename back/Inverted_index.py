@@ -65,14 +65,14 @@ class daopai:
         return self.topNum
 
 
-a = daopai().getInv()
-# print(a["man"])
+# a = daopai().getInv()
+# # print(a["man"])
 
-try:
-    b = logic_judge_final.logicSearch("man&who",a)
-    print(b.getAns())
-except KeyError:
-    print("当前条件下找不到匹配文件！")
+# try:
+#     b = logic_judge_final.logicSearch("man&who",a)
+#     print(b.getAns())
+# except KeyError:
+#     print("当前条件下找不到匹配文件！")
 
 
 # a = daopai().search("and")

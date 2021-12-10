@@ -2,6 +2,7 @@ import os
 from collections import defaultdict
 
 from flask.helpers import send_file
+from numpy.lib.function_base import select
 
 class logicSearch:
     def __init__(self, input: str, invidx: dict):
@@ -18,6 +19,8 @@ class logicSearch:
             else:
                 buf +=i
         self.Liss.append(buf)
+        print("in logic")
+        print(self.Liss)
         # 获得文件名列表  
         files_path = 'D:\\vscodePythonSpace\Data_Structure_Course_Design\cs_data\\'
         dirs = os.listdir(files_path)

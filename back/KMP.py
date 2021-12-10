@@ -70,10 +70,11 @@ def search(sstr:str, x:str):#x是子串
         
         if(j==len(x)):    
             # 截取片段
+            #前面也取一点
             coutt = 0#记录空格数量
             seg = ""
-            nn = int(i)
-            while coutt < 6:
+            nn = int(i)-10#i是目标子串开始的位置，稍微往前找几个单词
+            while coutt < 12:
                 if  nn==len(sstr)-1:
                     break
                 if sstr[nn] == " ":
