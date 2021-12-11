@@ -3,6 +3,7 @@ import sys
 sys.path.append('../back/')
 from huffman_final import huffman
 from search import searcher
+from TOP30 import TOP
 app = Flask(__name__)
 
 
@@ -23,6 +24,9 @@ def exdoc():
 @app.route('/encode')
 def encode():
     return render_template('encode.html')
+@app.route('/statistic')
+def statistic():
+    return render_template('statistic.html')
 # #显示中文文本
 # @app.route('/jsondemo', methods = ['post'])
 # def jsondemo():
@@ -122,6 +126,26 @@ def encode_save():
     file = open(fname,'w')
     file.write(cont)
     return cont
+
+@app.route('/encode/decode', methods = ['post'])
+def encode_decode():
+    ii = request.json.get('name')
+    path1 = "D:\\vscodePythonSpace\Data_Structure_Course_Design\cs_data\\"
+    print(path1)
+    path1 += str(ii)
+    a = huffman(path1)
+    a.get_code()
+    # print(a.encodingFile(path1))
+    return a.decoding(a.encodingFile(path1))
+
+@app.route('/statistic/show', methods = ['post'])
+def statistic_show():
+    ii = request.json.get('name')
+    T = TOP(ii)
+    return T.sorrt()
+    
+    # return a.decoding(a.encodingFile(path1))
+    # 开始对选定文件进行词频统计
 
 if __name__ == '__main__':
     app.run(port=8080, debug=True)

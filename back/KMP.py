@@ -74,12 +74,17 @@ def search(sstr:str, x:str):#x是子串
             coutt = 0#记录空格数量
             seg = ""
             nn = int(i)-10#i是目标子串开始的位置，稍微往前找几个单词
+            temp = ""#用于截取一个一个单词
             while coutt < 12:
+                if temp == (" "+x):
+                    temp = "<mark>"+temp+"</mark>"
                 if  nn==len(sstr)-1:
                     break
                 if sstr[nn] == " ":
                     coutt+=1
-                seg+=sstr[nn]
+                    seg+=temp
+                    temp = ""
+                temp+=sstr[nn]
                 nn += 1
             res.append(seg)
             j=0

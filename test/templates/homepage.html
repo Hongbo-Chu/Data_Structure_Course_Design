@@ -33,7 +33,7 @@
               <ion-icon name="search-circle-outline"></ion-icon>
             </span>
             <span class="title"><b>search</b></span>
-          </a>
+             <button id="btn_sss"></button>
         </li>
         <li>
           <a href="#">
@@ -64,6 +64,17 @@
             </span>
             <span class="title"><b>edit exist
               <button id="btn_exitc"></button>
+            </b></span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="medal-outline"></ion-icon>
+            </span>
+            <span class="title"><b>Statistics
+              <button id="btn_statistic"></button>
             </b></span>
           </a>
         </li>
@@ -198,6 +209,12 @@
       window.open("exdoc.html");
 
     });
+    $("#btn_statistic").click(function () {
+      window.location.href = "statistic";
+      window.open("statistic.html");
+
+    });
+
   </script>
 
 </body>

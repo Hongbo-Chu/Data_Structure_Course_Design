@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../static/statistic.css" />
+  <link rel="stylesheet" type="text/css" href="../static/style.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="homepage.css" th:href="@{homepage.css}" /> -->
+  <!-- <link href="{{ url_for('static', filename = 'homepage.css') }}" rel="stylesheet" />； -->
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <div class="container">
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="document-attach-outline"></ion-icon>
+            </span>
+            <span class="title">
+              <h1>Onlinedoc</h1>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="search-circle-outline"></ion-icon>
+            </span>
+            <span class="title"><b>search</b></span>
+            <button id="btn_sss"></button>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="clipboard-outline"></ion-icon>
+            </span>
+            <span class="title"><b>newdoc1
+                <button id="btn_doc"></button>
+              </b></span>
+
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="code-slash-outline"></ion-icon>
+
+            </span>
+            <span class="title"><b>encode/decode
+                <button id="btn_enc"></button>
+              </b></span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="create-outline"></ion-icon>
+            </span>
+            <span class="title"><b>edit exist
+                <button id="btn_exitc"></button>
+              </b></span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="medal-outline"></ion-icon>
+            </span>
+            <span class="title"><b>Statistics
+                <button id="btn_statistic"></button>
+              </b></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="main">
+      <div class="stack">file choosed
+
+        <div class="chart-container">ddd
+          <canvas id="chart"></canvas>
+        </div>
+
+      </div>
+
+
+
+
+      <div class="tttt">
+        <div class="toggle">
+          <ion-icon name="menu-outline"></ion-icon>
+        </div>
+        <!-- add -->
+        <div class="search">
+          <label>
+            <input id="ss" name="ss" type="text" placeholder="choose files~" class="placeholder-gray-400 ...">
+            <!-- <ion-icon name="search-outline"></ion-icon> -->
+            <button id="btn" class="searchenter">add</button>
+            <BUtton id="btn_sub" class="btn_sub">sub</BUtton>
+            <button id="btn_tijiao" class="btn_tijiao">submit</button>
+          </label>
+        </div>
+
+
+        <div class="user">
+          <img src="../static/image1.jpg">
+        </div>
+      </div>
+
+      <ul id="showw" style="width: 600px;">
+
+      </ul>
+
+
+      <footer class="footer">
+
+        <svg width="70" height="60" viewBox="0 0 70 60" class="heart animate-bounce w-6 h-6 ...">
+          <path
+            d="M0 10 L10 10 L10 0 L30 0 L30 10 L40 10 L40 0 L60 0 L60 10 L70 10 L70 30 L60 30 L60 40 L50 40 L50 50 L40 50 L40 60 L30 60 L30 50 L20 50 L20 40 L10 40 L10 30 L0 30 Z"
+            fill="red" fill-rule="evenodd" />
+        </svg>
+        <p class="text-blue-600 text-opacity-25..." style="width:1000px;">
+          web made by chb 19026110
+        </p>
+      </footer>
+    </div>
+
+  </div>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+  <script>
+    //menutoggle
+    let toggle = document.querySelector('.toggle');
+    let navigation = document.querySelector('.navigation');
+    let main = document.querySelector('.main');
+
+    toggle.onclick = function () {
+      navigation.classList.toggle('active');//这里的toggle是函数 不是上面的toggle如果classList中存在给定的值，删除它，否则，添加它；
+      main.classList.toggle('active');
+    }
+    //添加hover class在选定的item上
+    let list = document.querySelectorAll('.navigation li');
+    function activeLink() {
+      list.forEach((item) =>
+        item.classList.remove('hovered'));//移除或添加类
+      this.classList.add('hovered');
+    }
+    list.forEach((item) =>
+      item.addEventListener('mouseover', activeLink));
+  </script>
+
+  
+  <script>
+    
+
+    function chartIt() {
+      //图表函数
+      const ctx = document.getElementById('chart').getContext('2d');
+      //const ctx = $('#chart');
+      ctx.canvas.width = 300;
+      ctx.canvas.height = 300;
+      const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
+    chartIt();
+    alert("hihi");
+
+
+
+    // hide()
+    // show()
+    //用于删除数组中指定元素的函数
+    Array.prototype.indexOf = function (val) {
+      for (var i = 0; i < this.length; i++) {
+        if (this[i] == val) return i;
+      }
+      return -1;
+    };
+    Array.prototype.remove = function (val) {
+      var index = this.indexOf(val);
+      if (index > -1) {
+        this.splice(index, 1);
+      }
+    };
+
+    var fname = new Array();
+    var fname_submit = new Array();//用于提交 就不处理了
+
+    $("#btn").click(function () {//添加文件
+      //chartIt();
+      var temp = $('#ss').val();
+      fname_submit.push(temp);
+      temp = "<ul>" + temp + "</ul>"
+      fname.push(temp);
+      $(".stack").html("");
+      $(".stack").append(fname);
+      chartIt();
+      return false;
+    });
+
+    $("#btn_sub").click(function () {//删除文件
+      var temp = $('#ss').val();
+      fname_submit.remove(temp);
+      temp = "<ul>" + temp + "</ul>"
+      fname.remove(temp);
+      $(".stack").html("");
+      $(".stack").append(fname);
+      chartIt();
+    });
+
+    $("#btn_tijiao").click(function () {//提交文件名
+      var names = new Array();
+      var nums = new Array();
+      $.ajax({
+        url: '/statistic/show',
+        data: JSON.stringify({
+          'name': fname_submit
+        }),
+        dataType: 'json',  // 服务器回传的
+        contentType: 'application/json',//传给服务器的
+        method: 'POST',
+        success: function (data) {
+          for (var i in data) {
+            names.push(i);
+            nums.push(data[i]);
+          }
+          //const ctx = document.getElementById('chart');
+          const ctx = $('#chart');
+          ctx.canvas.width = 300;
+          ctx.canvas.height = 300;
+          const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: [12, 19, 3, 5, 2, 3],
+              datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        },
+        error: function () {
+          alert('error2');
+        }
+      })
+    });
+
+    $("#enbtn").click(function () {
+      $.ajax({
+        url: '/encode',
+        data: JSON.stringify({
+          'name': $('#demo').val()
+        }),
+        dataType: 'text',  // 服务器回传的
+        contentType: 'application/json',//传给服务器的
+        method: 'POST',
+        success: function (data) {
+          // alert(data.name);
+          $('#enbtn').text(data);
+        },
+        error: function () {
+          alert('error2');
+        }
+      })
+    });
+
+    $("#btn_sss").click(function () {
+
+      window.location.href = "homepage";
+      window.open("homepage.html");
+    });
+
+    $("#btn_doc").click(function () {
+      window.location.href = "doc";
+      window.open("doc.html");
+
+    });
+    $("#btn_enc").click(function () {
+      window.location.href = "encode";
+      window.open("encode.html");
+
+    });
+    $("#btn_exitc").click(function () {
+      window.location.href = "exdoc";
+      window.open("exdoc.html");
+
+    });
+    $("#btn_statistic").click(function () {
+      window.location.href = "exdoc";
+      window.open("exdoc.html");
+    });
+  </script>
+
+</body>
+
+</html>

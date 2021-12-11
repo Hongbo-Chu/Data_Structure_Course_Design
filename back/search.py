@@ -38,7 +38,6 @@ def searcher(x:str) ->json:
             buf +=i
     words.append(buf)
     
-    print(words)
     
     files_path = 'D:\\vscodePythonSpace\Data_Structure_Course_Design\cs_data'
     final_ans = defaultdict(list)
@@ -55,7 +54,6 @@ def searcher(x:str) ->json:
                 if temp != []:
                     final_ans[file].append(temp)
     jans = json.dumps(final_ans)
-    print(final_ans)
     return jans
 
 # ww = input("输入要查找的内容")
