@@ -47,6 +47,11 @@
             class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
             switchmode
           </button>
+          <input type="text" name="replace" id="replace_inp">
+          <button id="btn_replace"
+            class="btn1 transition duration-500 ease-in-out bg-gray-400 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-110 ...">
+            replaceall
+          </button>
         </div>
       </div>
       <div class="textarea">
@@ -62,8 +67,8 @@
   <script src="https://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
   <script>
     var mode_flag = 1;
-    
-    
+
+
 
     $("#savee").click(function () {
       $.ajax({
@@ -91,20 +96,20 @@
     $("#search").click(function () {
       var positions = new Array();
       function searchSubStr(str, subStr) {
-      var pos = str.indexOf(subStr);
-      while (pos > -1) {
-        positions.push(pos);
-        pos = str.indexOf(subStr, pos + 1);
+        var pos = str.indexOf(subStr);
+        while (pos > -1) {
+          positions.push(pos);
+          pos = str.indexOf(subStr, pos + 1);
+        }
       }
-    }
       var a = $("#txa").val();
       var con = $("#searchTEXT").val();
       var len_ = con.length;
-      searchSubStr(a,con);
+      searchSubStr(a, con);
       let arr = a.split('');
-      for(var i=positions.length;i>0;i--){  
-          arr.splice(positions[i-1]+len_,0,"</mark>");
-          arr.splice(positions[i-1],0,'<mark>');
+      for (var i = positions.length; i > 0; i--) {
+        arr.splice(positions[i - 1] + len_, 0, "</mark>");
+        arr.splice(positions[i - 1], 0, '<mark>');
       }
       a = arr.join('');
       $("#sear").html("");
@@ -112,7 +117,7 @@
       console.log(positions);
       console.log(a);
       positions = new Array();
-      
+
       console.log(con);
     });
 
@@ -128,6 +133,18 @@
         $("#txa").show();
         mode_flag = 1;
       }
+    });
+    $("#btn_replace").click(function () {
+      var neew = $("#replace_inp").val();
+      var oldd = $("#searchTEXT").val();
+      var a = $("#txa").val();
+      var oReg = new RegExp(oldd, "g");
+      var res = a.replace(oReg, neew);
+      //$("#sear").html("");
+      //$("#sear").append(res);
+      //$("#txa").html("");
+      $("#txa").val(res);
+
     });
 
   </script>
