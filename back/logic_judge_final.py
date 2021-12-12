@@ -19,8 +19,8 @@ class logicSearch:
             else:
                 buf +=i
         self.Liss.append(buf)
-        print("in logic")
-        print(self.Liss)
+        # print("in logic")
+        # print(self.Liss)
         # 获得文件名列表  
         files_path = 'D:\\vscodePythonSpace\Data_Structure_Course_Design\cs_data\\'
         dirs = os.listdir(files_path)

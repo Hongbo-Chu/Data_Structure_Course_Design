@@ -326,15 +326,24 @@ pointer-events: none;
     left: 70px;
     top: 180px;
     width: 200px;
-    height: 400px;
-    background: rgba(16, 209, 183, 0.685);;  
+    height: 500px;
+    background:  rgba(128, 128, 128, 0.178);
 }
 
 .chart-container{
     position: absolute;
     left: 400px;
-    top: 0px;
+    top: 150px;
     height: 500px;
     width: 500px;
     /* background: #000; */
+}
+
+#bar{
+    width: 80px;
+    height: 30px;
+}
+#pie{
+    width: 80px;
+    height: 30px;
 }

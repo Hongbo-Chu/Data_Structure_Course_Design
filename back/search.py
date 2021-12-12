@@ -30,13 +30,28 @@ def searcher(x:str) ->json:
     #将要搜索的词挑出来
     words = []
     buf = ""
-    for i in x:   
+    for i in x:
         if (i == "&") or (i == "|") or (i == "~"):
-            words.append(buf)
+            if buf != "":
+                words.append(buf)
             buf = ""
+            words.append(i)
         else:
-            buf +=i
+            buf += i
     words.append(buf)
+    for i in ['|',"&"]:
+        for k in words:
+            if k == i:
+                words.remove(i)
+    cont = len(words)
+    i = 0
+    while i<cont:
+        if words[i] == "~":
+            del(words[i])
+            del(words[i])
+            i -= 2
+        i += 1
+        cont = len(words)
     
     
     files_path = 'D:\\vscodePythonSpace\Data_Structure_Course_Design\cs_data'
